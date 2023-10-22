@@ -1,0 +1,13 @@
+.wrapper{
+    border-top: 03px solid green;
+    border-radius: 10px;
+
+}
+.wrapper.term{
+    text-decoration: none;
+    color: green;
+   
+}
+.wrapper p{
+    font-size: 12px;
+}
