@@ -49,12 +49,12 @@ public final class Employee_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <title>View Employee</title>\n");
-      out.write("        <link rel=\"stylesheet\" href=\"Bootsrap/css/bootstrap.min_1.css\">\n");
+      out.write("        <link rel=\"stylesheet\" href=\"Bootsrap/css/bootstrap.min.css\">\n");
       out.write("        <script src=\"Bootsrap/jqueary/jquery.min.js\"></script>\n");
       out.write("        <script src=\"Bootsrap/js/bootstrap.min.js\"></script>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <div class=\"container bg-info mb-5\">\n");
+      out.write("        <div class=\"container bg-light mb-5\">\n");
       out.write("\n");
       out.write("            <div class=\"row\">\n");
       out.write("                <div class=\"col-sm-3\"></div>\n");
@@ -143,6 +143,7 @@ public final class Employee_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        });\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       out.write("        function searchTable() {\n");
       out.write("            var xhttp = new XMLHttpRequest();\n");
       out.write("            xhttp.onload = function () {\n");
@@ -153,6 +154,7 @@ public final class Employee_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        }\n");
       out.write("        function load(uid) {\n");
       out.write("            $('#recipient-uid').val(uid);\n");
+      out.write("            \n");
       out.write("        }\n");
       out.write("\n");
       out.write("\n");
@@ -161,7 +163,7 @@ public final class Employee_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            var username = document.getElementById('recipient-uname').value;\n");
       out.write("            var password = document.getElementById('recipient-pw').value;\n");
       out.write("            var stat = document.getElementById('recipient-stat').value;\n");
-      out.write("            alert(userid + \" \" + username + \" \" + password + \" \" + stat)\n");
+      out.write("\n");
       out.write("            var xhttp = new XMLHttpRequest();\n");
       out.write("            xhttp.onload = function () {\n");
       out.write("                $(\"input:text\").val(\"\");\n");

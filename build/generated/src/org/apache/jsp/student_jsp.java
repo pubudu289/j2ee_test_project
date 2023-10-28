@@ -3,8 +3,10 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.util.List;
+import DAO.dto.Student;
 
-public final class addCustomer_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class student_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -44,11 +46,13 @@ public final class addCustomer_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Add New Customer</title>\n");
+      out.write("        <title>Add New Student</title>\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -65,7 +69,7 @@ public final class addCustomer_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <div class=\"row\">\n");
       out.write("                <div class=\"col-sm-3\"></div>\n");
       out.write("                <div class=\"col-sm-6\">\n");
-      out.write("                    <h1>ADD NEW CUSTOMER</h1>\n");
+      out.write("                    <h1>ADD NEW STUDENT</h1>\n");
       out.write("                </div>\n");
       out.write("                <div class=\"col-sm-3\"></div>\n");
       out.write("            </div>\n");
@@ -75,35 +79,17 @@ public final class addCustomer_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <div class=\"col-sm-2\"></div>\n");
       out.write("                <div class=\"col-sm-8\">\n");
       out.write("                    <div class=\"form-group mb-3\">\n");
-      out.write("                        <input class=\"form-control\" type=\"text\" name=\"cusid1\" id=\"cusid1\" placeholder=\"Customer ID\"/>\n");
+      out.write("                        <input class=\"form-control\" type=\"text\" name=\"stuid\" id=\"stuid\" placeholder=\"Student ID\"/>\n");
       out.write("                    </div>\n");
       out.write("                    <div class=\"form-group  mb-3\">\n");
-      out.write("                        <input class=\"form-control\" type=\"text\" name=\"fname\" id=\"fname\" placeholder=\"Customer First Name\"/>\n");
+      out.write("                        <input class=\"form-control\" type=\"text\" name=\"name\" id=\"name\" placeholder=\"Student Name\"/>\n");
       out.write("                    </div>\n");
       out.write("                    <div class=\"form-group mb-3\">\n");
-      out.write("                        <input class=\"form-control\" type=\"text\" name=\"lname\" id=\"lname\" placeholder=\"Customer Last Name\"/>\n");
-      out.write("                    </div>\n");
-      out.write("                    <div class=\"form-group  mb-3\">\n");
-      out.write("                        <input class=\"form-control\" type=\"text\" name=\"email\" id=\"email\" placeholder=\"Customer Email\"/>\n");
+      out.write("                        <input class=\"form-control\" type=\"text\" name=\"address\" id=\"age\" placeholder=\"Student Address\"/>\n");
       out.write("                    </div>\n");
       out.write("                    <div class=\"form-group mb-3\">\n");
-      out.write("                        <input class=\"form-control\" type=\"text\" name=\"uname\" id=\"uname\" placeholder=\"Customer User Name\"/>\n");
-      out.write("                    </div>\n");
-      out.write("                    <div class=\"form-group  mb-3\">\n");
-      out.write("                        <input class=\"form-control\" type=\"password\" name=\"pass1\" id=\"pass1\" placeholder=\"Password\"/>\n");
-      out.write("                    </div>\n");
-      out.write("                    <div class=\"form-group mb-3\">\n");
-      out.write("                        <input class=\"form-control\" type=\"password\" name=\"pass2\" id=\"pass2\" placeholder=\"Confirm Password\"/>\n");
-      out.write("                    </div>\n");
-      out.write("                    <div class=\"form-group  mb-3 id_100\">\n");
-      out.write("                        <select class=\"form-control\" id=\"stat\">\n");
-      out.write("                            <option value=\"1\">Active</option>\n");
-      out.write("                            <option value=\"0\">Inactive</option>\n");
-      out.write("                        </select>\n");
-      out.write("                    </div>\n");
-      out.write("                    <div class=\"form-group mb-3\">\n");
-      out.write("                        <button class=\"btn btn-primary btn-block\" onclick=\"CustomerSave()\">Save Customer</button>\n");
-      out.write("                        \n");
+      out.write("                        <button class=\"btn btn-primary btn-block\" onclick=\"StudentSave()\">Save Student</button>\n");
+      out.write("\n");
       out.write("                    </div>\n");
       out.write("\n");
       out.write("                </div>\n");
@@ -139,23 +125,57 @@ public final class addCustomer_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <div class=\"container\">\n");
       out.write("            <div class=\"row\">\n");
       out.write("                <div class=\"col-md-1\"></div>\n");
+      out.write("\n");
+      out.write("                ");
+
+                    if (session.getAttribute("studentList") != null) {
+
+
+                
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("                <div class=\"col-md-10\">\n");
       out.write("                    <table class=\"table table-light\" id=\"custab2\">\n");
       out.write("                        <tr>\n");
-      out.write("                            <th>ID</th>\n");
-      out.write("                            <th>FIRST NAME</th>\n");
-      out.write("                            <th>LAST NAME</th>\n");
-      out.write("                            <th>EMAIL</th>\n");
-      out.write("                            <th>USERNAME</th>\n");
-      out.write("                            <th>PASSWORD</th>\n");
-      out.write("                            <th>STATUS</th>\n");
-      out.write("                            <th>UPDATE ACTION</th>\n");
+      out.write("                            <th>STUDENT ID</th>\n");
+      out.write("                            <th>STUDENT NAME</th>\n");
+      out.write("                            <th>STUDENT AGE</th>\n");
       out.write("                            <th>DELETE ACTION</th>\n");
       out.write("                        </tr> \n");
-      out.write("                        <tbody id=\"tab3\"></tbody>\n");
+      out.write("                        <!--                        <tbody id=\"tab3\"></tbody>-->\n");
+      out.write("                        ");
+                            List<Student> list = (List<Student>) session.getAttribute("studentList");
+                            for (Student student : list) {
+
+                        
+      out.write("\n");
+      out.write("                        <tr>\n");
+      out.write("                            <td>");
+      out.print( student.getId());
+      out.write("</td>\n");
+      out.write("                            <td>");
+      out.print( student.getName());
+      out.write("</td>\n");
+      out.write("                            <td>");
+      out.print( student.getAge());
+      out.write("</td>\n");
+      out.write("                            <td><a></a></td>\n");
+      out.write("                        </tr>\n");
+      out.write("                        ");
+
+                            }
+                        
+      out.write("\n");
       out.write("\n");
       out.write("                    </table>\n");
       out.write("                </div>\n");
+      out.write("                ");
+
+                    }
+
+                
+      out.write("\n");
       out.write("                <div class=\"col-md-1\"></div>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
@@ -166,43 +186,33 @@ public final class addCustomer_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    </body>\n");
       out.write("\n");
       out.write("    <script>\n");
-      out.write("        $(document).ready(function (){\n");
-      out.write("            CustomersSearch() \n");
+      out.write("        $(document).ready(function () {\n");
+      out.write("            StudentsSearch()\n");
       out.write("        });\n");
-      out.write("        \n");
-      out.write("        function CustomerSave() {\n");
-      out.write("            var id = document.getElementById('cusid1').value;\n");
-      out.write("            var fname = document.getElementById('fname').value;\n");
-      out.write("            var lname = document.getElementById('lname').value;\n");
-      out.write("            var mail = document.getElementById('email').value;\n");
-      out.write("            var uname = document.getElementById('uname').value;\n");
-      out.write("            var pass1 = document.getElementById('pass1').value;\n");
-      out.write("            var pass2 = document.getElementById('pass2').value;\n");
-      out.write("            var stat = document.getElementById('stat').value;\n");
       out.write("\n");
+      out.write("        function StudentSave() {\n");
+      out.write("            var id = document.getElementById('stuid').value;\n");
+      out.write("            var name = document.getElementById('name').value;\n");
+      out.write("            var age = document.getElementById('age').value;\n");
       out.write("            var xhttp = new XMLHttpRequest();\n");
       out.write("\n");
       out.write("            xhttp.onload = function () {\n");
-      out.write("                $(\"input:text\").val(\"\");\n");
-      out.write("                $(\"input:password\").val(\"\");\n");
-      out.write("                $(\"div.id_100 select\").val(\"1\").change();\n");
-      out.write("                CustomersSearch();\n");
-      out.write("                $('#myModal').modal('toggle');\n");
-      out.write("            \n");
+      out.write("//                $(\"input:text\").val(\"\");\n");
+      out.write("//                $('#myModal').modal('toggle');\n");
       out.write("            }\n");
-      out.write("            xhttp.open(\"POST\", \"CustomerSave?cusid1=\" + id + \"&fname=\" + fname + \"&lname=\" + lname + \"&uname=\" + uname + \"&email=\" + mail + \"&pass1=\" + pass1 + \"&pass2=\" + pass2 + \"&stat=\" + stat);\n");
+      out.write("            xhttp.open(\"POST\", \"StudentSave?stuid=\" + id + \"&name=\" + name + \"&age=\" + age);\n");
       out.write("            xhttp.send();\n");
       out.write("\n");
       out.write("        }\n");
       out.write("\n");
-      out.write("        function CustomersSearch() {\n");
-      out.write("            var xhttp = new XMLHttpRequest();\n");
-      out.write("            xhttp.onload = function () {\n");
-      out.write("                document.getElementById('tab3').innerHTML = this.responseText;\n");
-      out.write("            }\n");
-      out.write("            xhttp.open(\"POST\", \"CustomersLoad\");\n");
-      out.write("            xhttp.send();\n");
-      out.write("        }\n");
+      out.write("//        function CustomersSearch() {\n");
+      out.write("//            var xhttp = new XMLHttpRequest();\n");
+      out.write("//            xhttp.onload = function () {\n");
+      out.write("//                document.getElementById('tab3').innerHTML = this.responseText;\n");
+      out.write("//            }\n");
+      out.write("//            xhttp.open(\"POST\", \"CustomersLoad\");\n");
+      out.write("//            xhttp.send();\n");
+      out.write("//        }\n");
       out.write("    </script>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
