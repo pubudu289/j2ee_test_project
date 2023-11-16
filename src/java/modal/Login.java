@@ -1,5 +1,5 @@
 package modal;
-// Generated Oct 20, 2023 12:54:13 AM by Hibernate Tools 4.3.1
+// Generated Nov 12, 2023 4:00:12 AM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;

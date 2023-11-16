@@ -4,6 +4,7 @@
     Author     : Pubudu
 --%>
 
+<%@page import="DAO.dto.SessionCart"%>
 <%@page import="DAO.dto.UserDataDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,13 +14,16 @@
         <title>JSP Page</title>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
               rel="stylesheet"/>
-        <!-- Google Fonts -->
+        <!--         Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
               rel="stylesheet"/>
-        <!-- MDB -->
+        <!--         MDB -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css"
               rel="stylesheet"/>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js" ></script>
+        <%@include file="MyResourceFile.jsp" %>
+
+
     </head>
     <body>
 
@@ -69,8 +73,22 @@
                 <!-- Right elements -->
                 <div class="d-flex align-items-center">
                     <!-- Icon -->
-                    <a class="text-reset me-3" href="#">
+                    <a class="text-reset me-3" href="shoppingcart.jsp">
                         <i class="fas fa-shopping-cart"></i>
+
+                        <%
+                            if (session.getAttribute("cart") != null) {
+                                SessionCart cart = (SessionCart) session.getAttribute("cart");
+                                if (cart.getItemList() != null && cart.getItemList().size() > 0) {
+                        %>
+
+                        <span class="badge rounded-pill badge-notification bg-danger"><%= cart.getItemList().size()%> </span>
+                        <%
+                                }
+                            }
+                        %>
+
+
                     </a>
 
                     <!-- Notifications -->
@@ -102,9 +120,8 @@
                         </ul>
                     </div>
                     <!-- Avatar -->
-                    <%
-                        if (request.getSession().getAttribute("UserData") != null) {
-                            UserDataDTO userdata = (UserDataDTO)request.getSession().getAttribute("UserData");
+                    <%                        if (request.getSession().getAttribute("UserData") != null) {
+                            UserDataDTO userdata = (UserDataDTO) request.getSession().getAttribute("UserData");
 
                     %>
 
@@ -130,7 +147,7 @@
                             aria-labelledby="navbarDropdownMenuAvatar"
                             >
                             <li>
-                                <a class="dropdown-item" href="#"><%=userdata.getFnme()+" "+userdata.getLname()%></a>
+                                <a class="dropdown-item" href="#"><%=userdata.getFnme() + " " + userdata.getLname()%></a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="#">Settings</a>
@@ -177,6 +194,12 @@
             </div>
             <!-- Container wrapper -->
         </nav>
+        <div class="container">
+
+            <div class="col-sm-12"><%@include file="viewItems.jsp" %></div>
+        </div>
+
+
 
 
     </body>

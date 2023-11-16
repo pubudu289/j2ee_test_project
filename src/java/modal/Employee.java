@@ -1,5 +1,5 @@
 package modal;
-// Generated Oct 20, 2023 12:54:13 AM by Hibernate Tools 4.3.1
+// Generated Nov 12, 2023 4:00:12 AM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -35,6 +35,7 @@ public class Employee  implements java.io.Serializable {
      private Date createddatetime;
      private String lastupdateuser;
      private Date lastupdatedatetime;
+     private Set<Cart> carts = new HashSet<Cart>(0);
      private Set<Login> logins = new HashSet<Login>(0);
 
     public Employee() {
@@ -45,7 +46,7 @@ public class Employee  implements java.io.Serializable {
         this.id = id;
         this.employeeno = employeeno;
     }
-    public Employee(int id, String employeeno, String firstname, String lastname, String mobileno, String email, Double salary, String createduser, Date createddatetime, String lastupdateuser, Date lastupdatedatetime, Set<Login> logins) {
+    public Employee(int id, String employeeno, String firstname, String lastname, String mobileno, String email, Double salary, String createduser, Date createddatetime, String lastupdateuser, Date lastupdatedatetime, Set<Cart> carts, Set<Login> logins) {
        this.id = id;
        this.employeeno = employeeno;
        this.firstname = firstname;
@@ -57,6 +58,7 @@ public class Employee  implements java.io.Serializable {
        this.createddatetime = createddatetime;
        this.lastupdateuser = lastupdateuser;
        this.lastupdatedatetime = lastupdatedatetime;
+       this.carts = carts;
        this.logins = logins;
     }
    
@@ -170,6 +172,15 @@ public class Employee  implements java.io.Serializable {
     
     public void setLastupdatedatetime(Date lastupdatedatetime) {
         this.lastupdatedatetime = lastupdatedatetime;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="employee")
+    public Set<Cart> getCarts() {
+        return this.carts;
+    }
+    
+    public void setCarts(Set<Cart> carts) {
+        this.carts = carts;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="employee")

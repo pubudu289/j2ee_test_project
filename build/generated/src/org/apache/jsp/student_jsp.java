@@ -88,7 +88,7 @@ public final class student_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <input class=\"form-control\" type=\"text\" name=\"address\" id=\"age\" placeholder=\"Student Address\"/>\n");
       out.write("                    </div>\n");
       out.write("                    <div class=\"form-group mb-3\">\n");
-      out.write("                        <button class=\"btn btn-primary btn-block\" onclick=\"StudentSave()\">Save Student</button>\n");
+      out.write("                        <button class=\"btn btn-primary btn-block\" id=\"saveButton\">Save Student</button>\n");
       out.write("\n");
       out.write("                    </div>\n");
       out.write("\n");
@@ -128,7 +128,7 @@ public final class student_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("                ");
 
-                    if (session.getAttribute("studentList") != null) {
+                    if (session.getAttribute("studentlist") != null) {
 
 
                 
@@ -143,9 +143,8 @@ public final class student_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <th>STUDENT AGE</th>\n");
       out.write("                            <th>DELETE ACTION</th>\n");
       out.write("                        </tr> \n");
-      out.write("                        <!--                        <tbody id=\"tab3\"></tbody>-->\n");
       out.write("                        ");
-                            List<Student> list = (List<Student>) session.getAttribute("studentList");
+                            List<Student> list = (List<Student>) session.getAttribute("studentlist");
                             for (Student student : list) {
 
                         
@@ -160,7 +159,9 @@ public final class student_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <td>");
       out.print( student.getAge());
       out.write("</td>\n");
-      out.write("                            <td><a></a></td>\n");
+      out.write("                            <td><a href=\"DeleteStudent?stuid=");
+      out.print(student.getId());
+      out.write(" \"><button class=\"btn btn-warning\">Delete</button></a></td>\n");
       out.write("                        </tr>\n");
       out.write("                        ");
 
@@ -186,33 +187,27 @@ public final class student_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    </body>\n");
       out.write("\n");
       out.write("    <script>\n");
+      out.write("\n");
       out.write("        $(document).ready(function () {\n");
-      out.write("            StudentsSearch()\n");
+      out.write("            $(\"#saveButton\").click(function () {\n");
+      out.write("                var stuid = $(\"#stuid\").val();\n");
+      out.write("                var name = $(\"#name\").val();\n");
+      out.write("                var age = $(\"#age\").val();\n");
+      out.write("\n");
+      out.write("                $.ajax({\n");
+      out.write("                    type: 'POST',\n");
+      out.write("                    url: \"StudentSave\",\n");
+      out.write("                    data: {\"stuid\": stuid, \"name\": name, \"age\": age},\n");
+      out.write("                    success: function (data) {\n");
+      out.write("                        window.location = \"student.jsp\";\n");
+      out.write("                    },\n");
+      out.write("                    error: function () {\n");
+      out.write("\n");
+      out.write("                    }\n");
+      out.write("                });\n");
+      out.write("            });\n");
+      out.write("\n");
       out.write("        });\n");
-      out.write("\n");
-      out.write("        function StudentSave() {\n");
-      out.write("            var id = document.getElementById('stuid').value;\n");
-      out.write("            var name = document.getElementById('name').value;\n");
-      out.write("            var age = document.getElementById('age').value;\n");
-      out.write("            var xhttp = new XMLHttpRequest();\n");
-      out.write("\n");
-      out.write("            xhttp.onload = function () {\n");
-      out.write("//                $(\"input:text\").val(\"\");\n");
-      out.write("//                $('#myModal').modal('toggle');\n");
-      out.write("            }\n");
-      out.write("            xhttp.open(\"POST\", \"StudentSave?stuid=\" + id + \"&name=\" + name + \"&age=\" + age);\n");
-      out.write("            xhttp.send();\n");
-      out.write("\n");
-      out.write("        }\n");
-      out.write("\n");
-      out.write("//        function CustomersSearch() {\n");
-      out.write("//            var xhttp = new XMLHttpRequest();\n");
-      out.write("//            xhttp.onload = function () {\n");
-      out.write("//                document.getElementById('tab3').innerHTML = this.responseText;\n");
-      out.write("//            }\n");
-      out.write("//            xhttp.open(\"POST\", \"CustomersLoad\");\n");
-      out.write("//            xhttp.send();\n");
-      out.write("//        }\n");
       out.write("    </script>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

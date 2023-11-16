@@ -41,5 +41,9 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="jsp_project"/>
- <table-filter match-name=".*" package="modal"/>
+  <table-filter match-name=".*" package="modal"/>
+<!--  <table-filter match-name="employee"/>
+  <table-filter match-name="customer"/>
+  <table-filter match-name="item"/>
+  <table-filter match-name="stock"/>-->
 </hibernate-reverse-engineering>

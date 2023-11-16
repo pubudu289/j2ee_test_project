@@ -1,10 +1,14 @@
 package modal;
-// Generated Oct 20, 2023 12:54:13 AM by Hibernate Tools 4.3.1
+// Generated Nov 12, 2023 4:00:12 AM by Hibernate Tools 4.3.1
 
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -17,34 +21,40 @@ import javax.persistence.Table;
 public class Item  implements java.io.Serializable {
 
 
-     private int id;
+     private String id;
      private String name;
      private String imgurl;
      private Boolean isactive;
+     private Integer sortkey;
+     private Set<Cartitem> cartitems = new HashSet<Cartitem>(0);
+     private Set<Stock> stocks = new HashSet<Stock>(0);
 
     public Item() {
     }
 
 	
-    public Item(int id) {
+    public Item(String id) {
         this.id = id;
     }
-    public Item(int id, String name, String imgurl, Boolean isactive) {
+    public Item(String id, String name, String imgurl, Boolean isactive, Integer sortkey, Set<Cartitem> cartitems, Set<Stock> stocks) {
        this.id = id;
        this.name = name;
        this.imgurl = imgurl;
        this.isactive = isactive;
+       this.sortkey = sortkey;
+       this.cartitems = cartitems;
+       this.stocks = stocks;
     }
    
      @Id 
 
     
-    @Column(name="id", unique=true, nullable=false)
-    public int getId() {
+    @Column(name="id", unique=true, nullable=false, length=20)
+    public String getId() {
         return this.id;
     }
     
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -76,6 +86,34 @@ public class Item  implements java.io.Serializable {
     
     public void setIsactive(Boolean isactive) {
         this.isactive = isactive;
+    }
+
+    
+    @Column(name="sortkey")
+    public Integer getSortkey() {
+        return this.sortkey;
+    }
+    
+    public void setSortkey(Integer sortkey) {
+        this.sortkey = sortkey;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="item")
+    public Set<Cartitem> getCartitems() {
+        return this.cartitems;
+    }
+    
+    public void setCartitems(Set<Cartitem> cartitems) {
+        this.cartitems = cartitems;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="item")
+    public Set<Stock> getStocks() {
+        return this.stocks;
+    }
+    
+    public void setStocks(Set<Stock> stocks) {
+        this.stocks = stocks;
     }
 
 

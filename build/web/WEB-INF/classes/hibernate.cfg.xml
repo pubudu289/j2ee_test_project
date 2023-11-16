@@ -41,14 +41,19 @@ Contributor(s):
 -->
 <hibernate-configuration>
   <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3309/jsp_project?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">12345</property>
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <mapping resource="modal/Customer.hbm.xml"/>
-    <mapping resource="modal/Employee.hbm.xml"/>
+    <mapping resource="modal/Stock.hbm.xml"/>
     <mapping resource="modal/Item.hbm.xml"/>
     <mapping resource="modal/Login.hbm.xml"/>
+    <mapping resource="modal/Employee.hbm.xml"/>
+    <mapping resource="modal/Customer.hbm.xml"/>
+    <mapping resource="modal/Cart.hbm.xml"/>
+    <mapping resource="modal/Cartstatus.hbm.xml"/>
+    <mapping resource="modal/Cartitem.hbm.xml"/>
+    <mapping resource="modal/Status.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

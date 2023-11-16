@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>file uploader</title>
-        <link rel="stylesheet" href="Bootsrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="Bootsrap/css/bootstrap.min_1.css">
         <script src="Bootsrap/jqueary/jquery.min.js"></script>
         <script src="Bootsrap/js/bootstrap.min.js"></script>
     </head>

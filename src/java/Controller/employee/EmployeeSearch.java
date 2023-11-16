@@ -61,7 +61,7 @@ public class EmployeeSearch extends HttpServlet {
                 }
              
                 content += "<td><button class='btn btn-danger'>Delete</button></td>";
-                content += "<tr>";
+                content += "</tr>";
             }
 
             out.print(content);

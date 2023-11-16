@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 12, 2023 4:00:12 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modal.Status" table="status" catalog="jsp_project" optimistic-lock="version">
+        <id name="code" type="string">
+            <column name="code" length="20" />
+            <generator class="assigned" />
+        </id>
+        <property name="description" type="string">
+            <column name="description" length="100" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Oct 20, 2023 12:54:13 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated Nov 12, 2023 4:00:12 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modal.Customer" table="customer" catalog="jsp_project" optimistic-lock="version">
         <id name="code" type="string">
